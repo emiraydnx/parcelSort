@@ -158,8 +158,10 @@ public class Main {
                         returnStack.push(nextParcel);
                         parcelTracker.updateStatus(nextParcel.getParcelID(), ParcelTracker.ParcelStatus.RETURNED);
                         parcelTracker.incrementReturnCount(nextParcel.getParcelID());
-                         parcelTracker.incrementTotalReturnedParcels(); 
+                        parcelTracker.incrementTotalReturnedParcels(); 
+                        maxStackSize = Math.max(maxStackSize, returnStack.size());
                         logWriter.write(String.format("Returned: %s misrouted -> Pushed to ReturnStack\n", nextParcel.getParcelID()));
+                        
                     } else {
                         // Remove the parcel and update status - removeParcel handles the counting
                         destinationSorter.removeParcel(activeCity, nextParcel.getParcelID());
@@ -168,6 +170,7 @@ public class Main {
                     }
                 }
 
+           
                 // ReturnStack yeniden işleme (her 3 tickte bir)
                 if (tick % 3 == 0 && !returnStack.isEmpty()) {
                     Parcel returned = returnStack.pop();
@@ -176,7 +179,7 @@ public class Main {
                     logWriter.write("Reprocessed from ReturnStack: " + returned.getParcelID() + "\n");
                 }
 
-                maxStackSize = Math.max(maxStackSize, returnStack.size());
+            
 
                 // Terminal rotasyonu kontrolü
                 String oldTerminal = activeCity;
