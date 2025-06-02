@@ -1,6 +1,5 @@
 package main;
 import java.io.*;
-import java.util.*;
 
 public class ConfigManager {
     private int maxTicks;
@@ -18,19 +17,16 @@ public class ConfigManager {
     private void loadConfig(String filePath) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(filePath));
         String line;
-
+        
         while ((line = reader.readLine()) != null) {
             line = line.trim();
             if (line.isEmpty() || line.startsWith("#"))
                 continue;
-
             String[] parts = line.split("=", 2);
             if (parts.length != 2)
                 continue;
-
             String key = parts[0].trim().toUpperCase();
             String value = parts[1].trim();
-
             switch (key) {
                 case "MAX_TICKS":
                     maxTicks = Integer.parseInt(value);
@@ -51,10 +47,23 @@ public class ConfigManager {
                     misroutingRate = Double.parseDouble(value);
                     break;
                 case "CITY_LIST":
-                    cityList = Arrays.stream(value.split(","))
-                            .map(String::trim)
-                            .filter(s -> !s.isEmpty())
-                            .toArray(String[]::new);
+                    String[] cities = value.split(",");
+                    cityList = new String[cities.length];
+                    int count = 0;
+                    for (String city : cities) {
+                        String trimmedCity = city.trim();
+                        if (!trimmedCity.isEmpty()) {
+                            cityList[count++] = trimmedCity;
+                        }
+                    }
+                    // Resize::
+                    if (count < cities.length) {
+                        String[] resized = new String[count];
+                        for (int i = 0; i < count; i++) {
+                            resized[i] = cityList[i];
+                        }
+                        cityList = resized;
+                    }
                     break;
                 default:
                     System.err.println("Unknown config key: " + key);
@@ -64,7 +73,7 @@ public class ConfigManager {
         reader.close();
     }
 
-    // Getter metotları
+    // Getters::
     public int getMaxTicks() {
         return maxTicks;
     }
