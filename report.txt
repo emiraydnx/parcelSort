@@ -2,30 +2,30 @@
 Total Ticks Executed: 300
 
 === Parcel Statistics ===
-Total Parcels Generated: 617
-Successfully Enqueued Parcels: 617
-Total Dispatched Parcels: 234
-Total Returned Parcels: 34
-Parcels Still in System: 383
+Total Parcels Generated: 606
+Successfully Enqueued Parcels: 606
+Total Dispatched Parcels: 238
+Total Returned Parcels: 38
+Parcels Still in System: 368
 
 === City Dispatch Counts ===
-Istanbul: 38
-Ankara: 46
+Istanbul: 49
+Ankara: 50
 Izmir: 49
-Bursa: 49
-Antalya: 52
-Total City Dispatches: 234
-Most Frequently Targeted Destination: Antalya
+Bursa: 44
+Antalya: 46
+Total City Dispatches: 238
+Most Frequently Targeted Destination: Ankara
 
 === Timing and Delay Metrics===
-Average Parcel Processing Time: 88,56 ticks
-Parcel With Longest Delay: P074 (232 ticks)
-Parcels Returned More Than Once: 3
+Average Parcel Processing Time: 87,00 ticks
+Parcel With Longest Delay: P063 (237 ticks)
+Parcels Returned More Than Once: 6
 
 === Data Structers Statistics ===
-Maximum Queue Size Observed: 25
-Maximum Stack Size observed:2
+Maximum Queue Size Observed: 22
+Maximum Stack Size observed:3
 Final Height Of BST: 3
-Total Parcels in BST: 363
+Total Parcels in BST: 372
 BST Balance Check: Balanced
-Hash Table Load Factor: 0,58
+Hash Table Load Factor: 0,63

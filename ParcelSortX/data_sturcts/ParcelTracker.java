@@ -303,6 +303,7 @@ public class ParcelTracker {
                 int newIndex = hash(current.parcelID);
                 current.next = table[newIndex];
                 table[newIndex] = current;
+                size++;
                 current = next;
             }
         }
